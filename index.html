@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TA 16 bài">
+<meta name="theme-color" content="#1473f5">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+</head>
+<body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Tiếng Anh bệnh viện – 16 bài</title>
+<style>
+/* Layout: một cột kiểu app — header trắng, các khối trắng ngăn bằng nền xám ấm, 4 ô tiến độ, thanh hành động cố định dưới đáy. Xanh dương là màu hành động duy nhất. */
+:root{
+  --bg:#f1efe9; --surface:#ffffff; --ink:#1d1b18; --muted:#7a746a; --line:#e6e2d9; --tile:#ecebe5;
+  --blue:#1473f5; --blue-ink:#ffffff; --amber:#d99a0b; --purple:#6b48c9; --green:#1c9a6b; --red:#d6453d;
+  --soft-green:#def3ea; --soft-red:#fbe4e2; --soft-blue:#e3eefe; --shadow:rgba(30,25,15,.28);
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12110e; --surface:#1d1b17; --ink:#f0eadf; --muted:#a39b8c; --line:#34302a; --tile:#2a2722;
+  --blue:#5aa2ff; --blue-ink:#0b1b33; --amber:#f0b73a; --purple:#a58cf0; --green:#4cc79a; --red:#ef7a72;
+  --soft-green:#173428; --soft-red:#3b1f1d; --soft-blue:#16273f; --shadow:rgba(0,0,0,.6); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#12110e; --surface:#1d1b17; --ink:#f0eadf; --muted:#a39b8c; --line:#34302a; --tile:#2a2722;
+  --blue:#5aa2ff; --blue-ink:#0b1b33; --amber:#f0b73a; --purple:#a58cf0; --green:#4cc79a; --red:#ef7a72;
+  --soft-green:#173428; --soft-red:#3b1f1d; --soft-blue:#16273f; --shadow:rgba(0,0,0,.6); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;
+  -webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:30}
+[hidden]{display:none!important}
+button{font-family:inherit;color:inherit}
+svg{flex:none}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.shell{max-width:520px;margin:0 auto;min-height:100vh;background:var(--bg)}
+.view{padding-bottom:130px}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);
+  display:flex;align-items:center;gap:14px;padding-top:16px;padding-bottom:16px;box-shadow:0 1px 0 var(--line)}
+.bar h1{margin:0;font-size:1.3rem;font-weight:700;letter-spacing:-.01em;flex:1;min-width:0}
+.ibtn{width:40px;height:40px;border:none;background:none;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;cursor:pointer;color:var(--ink);margin-left:-8px}
+.ibtn:active{background:var(--tile)}
+.ibtn.r{margin-left:0}
+
+.sec{background:var(--surface);padding-top:22px;padding-bottom:22px;margin-top:10px}
+.sec h2{margin:0 0 12px;font-size:1.28rem;font-weight:700;line-height:1.3;text-wrap:balance}
+.sec p{margin:0;color:var(--ink);font-size:1.02rem;line-height:1.6;max-width:62ch}
+.label{display:block;margin:22px 0 10px;font-size:.84rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.tile{background:var(--tile);border-radius:14px;padding:13px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+.tile .l{display:flex;align-items:center;gap:8px;min-width:0;font-size:.94rem}
+.tile .v{font-weight:600;font-variant-numeric:tabular-nums}
+.ic-blue{color:var(--blue)}.ic-amber{color:var(--amber)}.ic-purple{color:var(--purple)}.ic-gray{color:var(--muted)}
+
+.linkrow{display:flex;align-items:center;justify-content:space-between;width:100%;border:none;background:var(--surface);
+  color:var(--blue);font-weight:600;font-size:1.15rem;text-align:left;padding-top:22px;padding-bottom:22px;margin-top:10px;cursor:pointer}
+.tools{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:18px;padding-bottom:18px}
+.txtbtn{border:none;background:none;color:var(--muted);font-size:.86rem;cursor:pointer;text-decoration:underline;padding:6px 0}
+
+.cta{position:fixed;left:0;right:0;bottom:0;z-index:25;pointer-events:none}
+.cta>div{max-width:520px;margin:0 auto;pointer-events:auto;background:var(--surface);border-radius:22px 22px 0 0;
+  box-shadow:0 -8px 28px -14px var(--shadow);padding-top:14px;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+.btn{width:100%;border:none;border-radius:14px;background:var(--blue);color:var(--blue-ink);font-weight:700;font-size:1.12rem;
+  padding:16px;cursor:pointer}
+.btn:active{filter:brightness(.92)}
+.btn.sec2{background:var(--soft-blue);color:var(--blue)}
+.btn:disabled{opacity:.5}
+.btnrow{display:flex;gap:10px}
+.btnrow .btn{flex:1}
+
+/* danh sách thuật ngữ */
+.search{padding-top:12px;padding-bottom:12px;background:var(--surface)}
+.search input{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:1rem;font-family:inherit}
+.search input:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
+.ghead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-top:20px;padding-bottom:8px;font-weight:700;font-size:.96rem}
+.ghead span{color:var(--muted);font-weight:600;font-size:.84rem;font-variant-numeric:tabular-nums}
+.rows{background:var(--surface)}
+.row{border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.rowhead{display:flex;align-items:center;gap:12px;width:100%;border:none;background:none;text-align:left;padding-top:13px;padding-bottom:13px;cursor:pointer}
+.rt{flex:1;min-width:0;display:flex;flex-direction:column}
+.rt b{font-weight:600;font-size:1rem;overflow-wrap:anywhere}
+.rt small{color:var(--muted);font-size:.88rem;overflow-wrap:anywhere}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;background:var(--line)}
+.dot.l{background:var(--amber)}.dot.d{background:var(--green)}
+.chev{color:var(--muted);transition:transform .2s}
+.row.open .chev{transform:rotate(90deg)}
+.rowbody{padding-bottom:16px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.ipa{color:var(--muted);font-size:.95rem}
+.exen{font-style:italic;font-size:1rem}
+.exvi{color:var(--muted);font-size:.92rem}
+.spk{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--bg);border-radius:99px;
+  padding:7px 14px;font-size:.88rem;font-weight:600;color:var(--blue);cursor:pointer;margin-top:4px}
+.empty{padding:50px 20px;text-align:center;color:var(--muted)}
+
+/* phiên học */
+.sbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);display:flex;align-items:center;gap:12px;
+  padding-top:14px;padding-bottom:14px;box-shadow:0 1px 0 var(--line)}
+.prog{flex:1;height:8px;border-radius:99px;background:var(--tile);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--blue);border-radius:99px;transition:width .3s}
+.scount{font-size:.84rem;color:var(--muted);font-variant-numeric:tabular-nums;min-width:44px;text-align:right}
+.qwrap{padding-top:22px;display:flex;flex-direction:column;gap:14px}
+.qlabel{font-size:.82rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qlabel.new{color:var(--blue)}
+.qcard{background:var(--surface);border-radius:18px;padding:24px 20px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.qen{font-size:1.7rem;font-weight:700;line-height:1.25;letter-spacing:-.01em;text-wrap:balance;overflow-wrap:anywhere}
+.qvi{font-size:1.3rem;font-weight:600;line-height:1.35;text-wrap:balance}
+.qmean{font-size:1.2rem;font-weight:600;color:var(--blue)}
+.exbox{background:var(--bg);border-radius:12px;padding:12px 14px;width:100%;display:flex;flex-direction:column;gap:3px}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{border:2px solid var(--line);background:var(--surface);border-radius:14px;padding:15px 16px;text-align:left;font-size:1.02rem;
+  line-height:1.4;cursor:pointer;overflow-wrap:anywhere}
+.opt:active{background:var(--tile)}
+.opt.ok{border-color:var(--green);background:var(--soft-green)}
+.opt.bad{border-color:var(--red);background:var(--soft-red)}
+.opt:disabled{cursor:default}
+.fb{background:var(--surface);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fb .head{font-weight:700;font-size:1.05rem}
+.fb .head.ok{color:var(--green)}.fb .head.bad{color:var(--red)}
+
+.sum{padding-top:34px;display:flex;flex-direction:column;gap:18px;align-items:stretch}
+.sum h2{margin:0;font-size:1.6rem;text-align:center}
+.sum p{margin:0;text-align:center;color:var(--muted)}
+.bigpct{font-size:3.2rem;font-weight:700;text-align:center;color:var(--blue);font-variant-numeric:tabular-nums;line-height:1}
+
+/* sheet chọn nội dung */
+.backdrop{position:fixed;inset:0;background:rgba(15,12,8,.5);z-index:40;opacity:0;transition:opacity .25s}
+.backdrop.show{opacity:1}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--surface);border-radius:22px 22px 0 0;max-width:520px;margin:0 auto;
+  max-height:88%;overflow-y:auto;transform:translateY(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);
+  padding-top:8px;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}
+.sheet.show{transform:translateY(0)}
+.grip{width:40px;height:4px;border-radius:99px;background:var(--line);margin:8px auto 14px}
+.sheet h3{margin:0 0 4px;font-size:1.2rem}
+.sheet .sub{margin:0 0 14px;color:var(--muted);font-size:.9rem}
+.choices{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.choice{display:flex;justify-content:space-between;align-items:center;gap:10px;border:2px solid var(--line);background:var(--surface);
+  border-radius:12px;padding:12px 14px;font-size:.98rem;cursor:pointer;text-align:left}
+.choice small{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.choice.on{border-color:var(--blue);background:var(--soft-blue)}
+.seg{display:flex;background:var(--bg);border-radius:12px;padding:3px;gap:3px;margin-bottom:18px}
+.seg button{flex:1;border:none;background:none;padding:10px 6px;border-radius:9px;font-weight:600;font-size:.94rem;cursor:pointer;color:var(--muted)}
+.seg button.on{background:var(--blue);color:var(--blue-ink)}
+
+button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* điền từ */
+.fq{background:var(--surface);border-radius:18px;padding:22px 18px;display:flex;flex-direction:column;gap:14px}
+.fvi{font-size:1.05rem;font-weight:600;line-height:1.5}
+.fterm{color:var(--muted);font-size:.95rem}.fterm b{color:var(--ink)}
+.fsent{font-size:1.28rem;line-height:1.7;font-weight:600}
+.blank{display:inline-block;min-width:3.2em;border-bottom:3px solid var(--blue);color:var(--blue);text-align:center;padding:0 4px;letter-spacing:.08em}
+.blank.ok{border-color:var(--green);color:var(--green)}.blank.bad{border-color:var(--red);color:var(--red)}
+.fhint{min-height:1.4em;color:var(--muted);font-size:.95rem;font-variant-numeric:tabular-nums;letter-spacing:.12em}
+.fin{width:100%;box-sizing:border-box;font-size:1.15rem;padding:13px 14px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+.fin:focus{outline:none;border-color:var(--blue)}
+.fin.ok{border-color:var(--green)}.fin.bad{border-color:var(--red)}
+.fmsg{font-weight:700}.fmsg.ok{color:var(--green)}.fmsg.bad{color:var(--red)}
+.fact{display:flex;gap:10px;flex-wrap:wrap}.fact .btn{flex:1;min-width:120px;font-size:1rem;padding:13px 10px}
+/* ôn tập kiểu Anki */
+.srs-intro{margin:0 0 14px;color:var(--muted);font-size:.95rem;line-height:1.55;max-width:62ch}
+.decks{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.deck{display:flex;align-items:center;gap:10px;width:100%;border:none;border-bottom:1px solid var(--line);background:var(--surface);
+  padding:14px 14px;text-align:left;cursor:pointer;font-size:1rem}
+.deck:last-child{border-bottom:none}
+.deck:active{background:var(--tile)}
+.deck .dn{flex:1;min-width:0;font-weight:600}
+.deck.all .dn{color:var(--blue)}
+.cnt{display:flex;gap:10px;font-variant-numeric:tabular-nums;font-weight:700;font-size:.95rem}
+.c-new{color:var(--blue)}.c-lrn{color:var(--red)}.c-rev{color:var(--green)}
+.cnt .z{opacity:.28}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:.8rem;color:var(--muted)}
+.legend b{font-weight:700}
+.rv-top{display:flex;justify-content:center;gap:18px;padding-top:6px;font-size:1.05rem}
+.rv-top span{font-variant-numeric:tabular-nums;font-weight:700}
+.rv-top .on{text-decoration:underline;text-underline-offset:4px}
+.rcard{background:var(--surface);border-radius:18px;padding:26px 20px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;min-height:300px;justify-content:center}
+.rcard .qen{text-align:center}
+.rdiv{width:100%;border:none;border-top:1px solid var(--line);margin:6px 0}
+.rmean{font-size:1.3rem;font-weight:600;color:var(--blue);text-wrap:balance}
+.rcard .exbox{text-align:left}
+.grades{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.grade{border:none;border-radius:12px;padding:10px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:700;font-size:.95rem}
+.grade small{font-weight:600;font-size:.74rem;opacity:.85;font-variant-numeric:tabular-nums}
+.g-again{background:var(--soft-red);color:var(--red)}
+.g-hard{background:var(--tile);color:var(--ink)}
+.g-good{background:var(--soft-green);color:var(--green)}
+.g-easy{background:var(--soft-blue);color:var(--blue)}
+.grade:active{filter:brightness(.93)}
+.rdone{padding-top:40px;text-align:center;display:flex;flex-direction:column;gap:14px}
+.rdone h2{margin:0;font-size:1.5rem}
+.rdone p{margin:0;color:var(--muted)}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+
+<div class="shell">
+
+  <!-- TRANG CHÍNH -->
+  <div class="view" id="v-home">
+    <div class="bar pad">
+      <h1>Tiếng Anh bệnh viện</h1>
+      <button class="ibtn r" id="theme" aria-label="Đổi giao diện sáng/tối"></button>
+    </div>
+
+    <div class="sec pad">
+      <h2>Khóa học 16 bài</h2>
+      <p>Mỗi bài gồm 6 từ hoặc cụm từ và 8 câu hỏi đáp mẫu giữa nhân viên y tế và người bệnh. Học theo thứ tự từ bài 1 đến bài 16, hoặc chọn riêng từng bài để ôn trước buổi kiểm tra nghe và nói.</p>
+    </div>
+
+    <div class="sec pad">
+      <h2>Tiếng Anh giao tiếp tại bệnh viện</h2>
+      <p>Từ chào hỏi, chỉ đường, tiếp đón, hỏi tiền sử và triệu chứng, đo dấu hiệu sinh tồn, hướng dẫn khám, giải thích thủ thuật, đến thanh toán và kết thúc buổi gặp. Câu đơn giản, đọc được qua loa điện thoại.</p>
+
+      <span class="label">Tiến độ của bạn</span>
+      <div class="tiles">
+        <div class="tile"><span class="l ic-blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg><span style="color:var(--ink)">Đã học</span></span><span class="v" id="t-learned">0</span></div>
+        <div class="tile"><span class="l ic-amber"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span style="color:var(--ink)">Đang học</span></span><span class="v" id="t-learning">0</span></div>
+        <div class="tile"><span class="l ic-purple"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg><span style="color:var(--ink)">Độ chính xác</span></span><span class="v" id="t-acc">0%</span></div>
+        <div class="tile"><span class="l ic-gray"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg><span style="color:var(--ink)">Chưa mở</span></span><span class="v" id="t-unopened">224</span></div>
+      </div>
+    </div>
+
+    <div class="sec pad">
+      <h2>Ôn tập</h2>
+      <div class="seg" id="rmode"><button data-m="anki" class="on">Thẻ Anki</button><button data-m="fill">Điền từ</button></div>
+      <p class="srs-intro" id="srs-intro"></p>
+      <div class="decks" id="decks"></div>
+      <div class="legend" id="srs-legend"><span><b class="c-new">Xanh dương</b> thẻ mới</span><span><b class="c-lrn">Đỏ</b> đang học</span><span><b class="c-rev">Xanh lá</b> đến hạn ôn</span></div>
+    </div>
+
+    <button class="linkrow pad" id="open-list">Mở danh sách từ và câu mẫu
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+
+    <div class="tools pad">
+      <span style="color:var(--muted);font-size:.84rem">Tiến độ lưu trên trình duyệt của bạn</span>
+      <button class="txtbtn" id="reset">Đặt lại tiến độ</button>
+    </div>
+
+    <div class="cta" id="cta-home"><div class="pad"><button class="btn" id="start">Chọn và bắt đầu đào tạo</button></div></div>
+  </div>
+
+  <!-- DANH SÁCH THUẬT NGỮ -->
+  <div class="view" id="v-list" hidden>
+    <div class="bar pad">
+      <button class="ibtn" id="list-back" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <h1>Từ và câu mẫu</h1>
+    </div>
+    <div class="search pad"><input id="q" type="search" placeholder="Tìm tiếng Anh hoặc tiếng Việt" autocomplete="off"></div>
+    <div id="listbody"></div>
+  </div>
+
+  <!-- PHIÊN HỌC -->
+  <div class="view" id="v-session" hidden>
+    <div class="sbar pad">
+      <button class="ibtn" id="s-close" aria-label="Thoát"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="prog"><i id="s-prog"></i></div>
+      <span class="scount" id="s-count">0/0</span>
+    </div>
+    <div class="qwrap pad" id="s-body"></div>
+    <div class="cta" id="s-cta" hidden><div class="pad"><button class="btn" id="s-next">Tiếp tục</button></div></div>
+  </div>
+
+  <!-- TỔNG KẾT -->
+  <div class="view" id="v-review" hidden>
+    <div class="sbar pad">
+      <button class="ibtn" id="rv-close" aria-label="Thoát ôn tập"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <h1 id="rv-title" style="margin:0;font-size:1.05rem;font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Ôn tập</h1>
+    </div>
+    <div class="qwrap pad" id="rv-body"></div>
+    <div class="cta" id="rv-cta" hidden><div class="pad" id="rv-actions"></div></div>
+  </div>
+
+  <div class="view" id="v-fill" hidden>
+    <div class="sbar pad">
+      <button class="ibtn" id="f-close" aria-label="Thoát điền từ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="prog"><i id="f-bar"></i></div><span class="scount" id="f-count"></span>
+    </div>
+    <div class="qwrap pad" id="f-body" style="padding-bottom:40px"></div>
+  </div>
+
+  <div class="view" id="v-summary" hidden>
+    <div class="bar pad"><h1>Kết quả lượt học</h1></div>
+    <div class="sum pad" id="sum-body"></div>
+  </div>
+</div>
+
+<div class="backdrop" id="backdrop" hidden></div>
+<div class="sheet pad" id="sheet" hidden>
+  <div class="grip"></div>
+  <h3>Chọn bài để học</h3>
+  <p class="sub">Mỗi lượt ưu tiên mục đang học dở và mục chưa mở.</p>
+  <div class="choices" id="choices"></div>
+  <div class="seg" id="sizes"><button data-n="10" class="on">10 mục</button><button data-n="20">20 mục</button><button data-n="30">30 mục</button></div>
+  <button class="btn" id="go">Bắt đầu</button>
+</div>
+
+<script>
+(function(){
+/* ===== DỮ LIỆU: 16 bài × 14 mục (6 từ/cụm từ + 8 câu mẫu) ===== */
+var GROUPS=["Bài 1. Chào hỏi và giới thiệu bản thân","Bài 2. Số đếm, ngày tháng, thời gian, đánh vần","Bài 3. Các khoa, phòng, cơ sở vật chất","Bài 4. Hướng dẫn đường đi trong bệnh viện","Bài 5. Hỗ trợ và xác định nhu cầu","Bài 6. Thực hành tiếp đón (1)","Bài 7. Khai thác tiền sử bệnh cơ bản","Bài 8. Dấu hiệu sinh tồn, các chỉ số cơ bản","Bài 9. Mô tả triệu chứng","Bài 10. Thực hành tiếp đón (2)","Bài 11. Hướng dẫn người bệnh khi khám, điều trị","Bài 12. Giải thích quy trình, thủ thuật y tế","Bài 13. Thời gian chờ và chậm trễ","Bài 14. Thanh toán và bảo hiểm","Bài 15. Kết thúc giao tiếp","Bài 16. Ôn tập và củng cố kiến thức"];
+var RAW=[];
+function T(g,e,ipa,m,ex,exm){RAW.push([g,'T',e,ipa,m,ex,exm]);}
+function P(g,e,m,ex,exm){RAW.push([g,'P',e,'',m,ex,exm]);}
+
+/* Bài 1: Chào hỏi và giới thiệu bản thân */
+T(0,"greet","/ɡriːt/","chào hỏi","I greet every patient with a smile.","Tôi chào mọi bệnh nhân bằng một nụ cười.");
+T(0,"introduce","/ˌɪntrəˈduːs/","giới thiệu","Let me introduce myself.","Để tôi tự giới thiệu.");
+T(0,"name tag","/ˈneɪm tæɡ/","thẻ tên","My name tag is on my coat.","Thẻ tên của tôi ở trên áo.");
+T(0,"surname","/ˈsɜːrneɪm/","họ","Please spell your surname.","Xin đánh vần họ của anh/chị.");
+T(0,"doctor","/ˈdɑːktər/","bác sĩ","The doctor will see you now.","Bác sĩ sẽ khám cho anh/chị ngay bây giờ.");
+T(0,"welcome","/ˈwelkəm/","chào mừng","Welcome to our hospital.","Chào mừng anh/chị đến bệnh viện của chúng tôi.");
+P(0,"Hello. Welcome to our hospital.","Xin chào. Chào mừng anh/chị đến bệnh viện.","Hello, thank you.","Xin chào, cảm ơn bác sĩ.");
+P(0,"Good morning, sir. How are you?","Chào buổi sáng, thưa ông. Ông khỏe không?","I am fine, thank you.","Tôi khỏe, cảm ơn.");
+P(0,"Good afternoon, madam.","Chào buổi chiều, thưa bà.","Good afternoon, doctor.","Chào bác sĩ.");
+P(0,"Hi, I am nurse Lan.","Xin chào, tôi là y tá Lan.","Nice to meet you.","Rất vui được gặp chị.");
+P(0,"Nice to meet you.","Rất vui được gặp anh/chị.","Nice to meet you too.","Tôi cũng rất vui được gặp bác sĩ.");
+P(0,"Please call me Dr. Anh.","Xin hãy gọi tôi là bác sĩ Anh.","Okay, Dr. Anh.","Vâng, bác sĩ Anh.");
+P(0,"What should I call you?","Tôi nên gọi anh/chị là gì?","Please call me Mr. Smith.","Xin hãy gọi tôi là ông Smith.");
+P(0,"Thank you for coming.","Cảm ơn anh/chị đã đến.","You are welcome.","Không có gì.");
+
+/* Bài 2: Số đếm, ngày tháng, thời gian, đánh vần */
+T(1,"phone number","/foʊn ˈnʌmbər/","số điện thoại","Please write your phone number here.","Xin viết số điện thoại của anh/chị vào đây.");
+T(1,"date","/deɪt/","ngày (tháng năm)","What is today's date?","Hôm nay là ngày mấy?");
+T(1,"spell","/spel/","đánh vần","Can you spell your name?","Anh/chị đánh vần tên được không?");
+T(1,"month","/mʌnθ/","tháng","Your surgery is next month.","Ca mổ của anh/chị vào tháng sau.");
+T(1,"o'clock","/əˈklɑːk/","giờ đúng","Your visit is at nine o'clock.","Buổi khám của anh/chị lúc chín giờ đúng.");
+T(1,"weekday","/ˈwiːkdeɪ/","ngày trong tuần","The clinic is open on weekdays.","Phòng khám mở cửa các ngày trong tuần.");
+P(1,"What is your phone number?","Số điện thoại của anh/chị là gì?","It is zero nine one, two three four, five six seven.","Số của tôi là không chín một, hai ba bốn, năm sáu bảy.");
+P(1,"How do you spell your last name?","Họ của anh/chị đánh vần thế nào?","N-G-U-Y-E-N.","N-G-U-Y-E-N.");
+P(1,"What day is it today?","Hôm nay là thứ mấy?","It is Thursday.","Hôm nay là thứ Năm.");
+P(1,"What time is your appointment?","Mấy giờ là cuộc hẹn của anh/chị?","It is at half past nine.","Lúc chín giờ rưỡi.");
+P(1,"Your appointment is on the twelfth of November.","Lịch hẹn của anh/chị là ngày mười hai tháng Mười Một.","Can you write it down, please?","Chị viết ra giúp tôi được không?");
+P(1,"Please come at eight thirty.","Xin hãy đến lúc tám giờ ba mươi.","Eight thirty in the morning?","Tám giờ ba mươi buổi sáng ạ?");
+P(1,"Can you repeat the number, please?","Anh/chị nhắc lại số đó được không?","Yes. It is two, five, eight.","Vâng. Là hai, năm, tám.");
+P(1,"How many days have you felt sick?","Anh/chị thấy mệt mấy ngày rồi?","For five days.","Năm ngày rồi.");
+
+/* Bài 3: Các khoa, phòng, cơ sở vật chất */
+T(2,"department","/dɪˈpɑːrtmənt/","khoa","Which department do you need?","Anh/chị cần khoa nào?");
+T(2,"operating room","/ˈɑːpəreɪtɪŋ ruːm/","phòng mổ","The operating room is on the third floor.","Phòng mổ ở tầng ba.");
+T(2,"pharmacy","/ˈfɑːrməsi/","nhà thuốc","The pharmacy is next to the main entrance.","Nhà thuốc nằm cạnh cổng chính.");
+T(2,"laboratory","/ˈlæbrətɔːri/","phòng xét nghiệm","The laboratory is open until five.","Phòng xét nghiệm mở đến năm giờ.");
+T(2,"reception desk","/rɪˈsepʃn desk/","quầy tiếp đón","Please go to the reception desk.","Xin hãy đến quầy tiếp đón.");
+T(2,"restroom","/ˈrestruːm/","nhà vệ sinh","The restroom is at the end of the hall.","Nhà vệ sinh ở cuối hành lang.");
+P(2,"Which department do you need?","Anh/chị cần khoa nào?","I need the heart department.","Tôi cần khoa tim.");
+P(2,"The X-ray room is on the second floor.","Phòng chụp X-quang ở tầng hai.","Is there an elevator?","Có thang máy không ạ?");
+P(2,"The pharmacy is on the first floor.","Nhà thuốc ở tầng một.","Is it open now?","Bây giờ có mở cửa không?");
+P(2,"The restroom is on your right.","Nhà vệ sinh ở bên phải anh/chị.","Thank you very much.","Cảm ơn bác sĩ nhiều.");
+P(2,"This is the intensive care unit.","Đây là khoa hồi sức tích cực.","Can my family visit?","Người nhà tôi vào thăm được không?");
+P(2,"Visitors must wait in the waiting area.","Người nhà phải chờ ở khu vực chờ.","How long can I stay?","Tôi được ở lại bao lâu?");
+P(2,"The laboratory is open until five.","Phòng xét nghiệm mở đến năm giờ.","Can I do the test now?","Bây giờ tôi xét nghiệm được không?");
+P(2,"We have a small cafeteria downstairs.","Dưới lầu có một căng tin nhỏ.","Where can I buy water?","Tôi mua nước ở đâu?");
+
+/* Bài 4: Hướng dẫn đường đi trong bệnh viện */
+T(3,"floor","/flɔːr/","tầng","The room is on the third floor.","Căn phòng ở tầng ba.");
+T(3,"elevator","/ˈeləveɪtər/","thang máy","Please take the elevator.","Xin hãy đi thang máy.");
+T(3,"stairs","/sterz/","cầu thang","The stairs are behind you.","Cầu thang ở phía sau anh/chị.");
+T(3,"hallway","/ˈhɔːlweɪ/","hành lang","Walk down the hallway.","Hãy đi dọc hành lang.");
+T(3,"entrance","/ˈentrəns/","lối vào","Use the main entrance.","Hãy đi lối vào chính.");
+T(3,"exit","/ˈeɡzɪt/","lối ra","The exit is on your left.","Lối ra ở bên trái anh/chị.");
+P(3,"Go straight ahead.","Đi thẳng về phía trước.","Straight ahead?","Đi thẳng ạ?");
+P(3,"Turn left at the end of the hall.","Rẽ trái ở cuối hành lang.","Turn left, okay.","Rẽ trái, vâng.");
+P(3,"Turn right after the elevator.","Rẽ phải sau thang máy.","After the elevator, thank you.","Sau thang máy, cảm ơn bác sĩ.");
+P(3,"It is on your left.","Nó ở bên trái anh/chị.","Thank you, I see it.","Cảm ơn, tôi thấy rồi.");
+P(3,"Take the elevator to the third floor.","Đi thang máy lên tầng ba.","Which button should I press?","Tôi nên bấm nút nào?");
+P(3,"It is next to the pharmacy.","Nó nằm cạnh nhà thuốc.","Next to the pharmacy. Thank you.","Cạnh nhà thuốc. Cảm ơn bác sĩ.");
+P(3,"Follow me, please. I will take you there.","Xin đi theo tôi. Tôi sẽ đưa anh/chị đến đó.","That is very kind of you.","Chị tốt quá.");
+P(3,"Sorry, this is the wrong building.","Xin lỗi, đây không phải tòa nhà đúng.","Where should I go?","Tôi nên đi đâu?");
+
+/* Bài 5: Hỗ trợ và xác định nhu cầu của người bệnh */
+T(4,"wheelchair","/ˈwiːltʃer/","xe lăn","Do you need a wheelchair?","Anh/chị có cần xe lăn không?");
+T(4,"assistance","/əˈsɪstəns/","sự hỗ trợ","Do you need any assistance?","Anh/chị có cần hỗ trợ gì không?");
+T(4,"urgent","/ˈɜːrdʒənt/","khẩn cấp","This case is urgent.","Trường hợp này khẩn cấp.");
+T(4,"comfortable","/ˈkʌmftəbl/","thoải mái","Are you comfortable in this chair?","Anh/chị ngồi ghế này có thoải mái không?");
+T(4,"form","/fɔːrm/","phiếu, mẫu đơn","Please fill out this form.","Xin điền vào phiếu này.");
+T(4,"need","/niːd/","cần","Tell me what you need.","Hãy cho tôi biết anh/chị cần gì.");
+P(4,"How can I help you today?","Hôm nay tôi có thể giúp gì cho anh/chị?","I need to see a doctor.","Tôi cần gặp bác sĩ.");
+P(4,"Do you need a wheelchair?","Anh/chị có cần xe lăn không?","Yes, please. My leg hurts.","Có, làm ơn. Chân tôi đau.");
+P(4,"Is this an emergency?","Đây có phải trường hợp cấp cứu không?","No, but I feel very sick.","Không, nhưng tôi thấy rất mệt.");
+P(4,"Do you need an interpreter?","Anh/chị có cần phiên dịch không?","Yes, I speak only a little English.","Có, tôi chỉ nói được một ít tiếng Anh.");
+P(4,"Would you like some water?","Anh/chị có muốn uống nước không?","Yes, please.","Có, làm ơn.");
+P(4,"Are you comfortable?","Anh/chị có thoải mái không?","Yes, thank you.","Có, cảm ơn.");
+P(4,"Please fill out this form.","Xin điền vào phiếu này.","Can you help me with it?","Chị giúp tôi điền được không?");
+P(4,"Tell me if you need anything.","Hãy nói với tôi nếu anh/chị cần gì.","Thank you, nurse.","Cảm ơn chị y tá.");
+
+/* Bài 6: Thực hành tiếp đón và tiếp nhận người bệnh (1) */
+T(5,"check in","/tʃek ɪn/","làm thủ tục tiếp nhận","You can check in at the front desk.","Anh/chị có thể làm thủ tục ở quầy lễ tân.");
+T(5,"registration","/ˌredʒɪˈstreɪʃn/","đăng ký","Registration takes five minutes.","Đăng ký mất năm phút.");
+T(5,"ID card","/ˌaɪ ˈdiː kɑːrd/","thẻ căn cước","Please show me your ID card.","Xin cho tôi xem thẻ căn cước.");
+T(5,"insurance card","/ɪnˈʃʊrəns kɑːrd/","thẻ bảo hiểm","Do you have an insurance card?","Anh/chị có thẻ bảo hiểm không?");
+T(5,"ticket","/ˈtɪkɪt/","phiếu số thứ tự","Take a ticket and wait for your number.","Hãy lấy phiếu số và chờ đến lượt.");
+T(5,"address","/ˈædres/","địa chỉ","What is your address?","Địa chỉ của anh/chị là gì?");
+P(5,"Is this your first visit?","Đây là lần đầu anh/chị đến khám phải không?","Yes, it is my first time here.","Vâng, đây là lần đầu tôi đến đây.");
+P(5,"Please show me your ID card.","Xin cho tôi xem thẻ căn cước.","Here it is.","Đây ạ.");
+P(5,"Do you have an insurance card?","Anh/chị có thẻ bảo hiểm không?","Yes, here is my card.","Có, đây là thẻ của tôi.");
+P(5,"What is your address?","Địa chỉ của anh/chị là gì?","I live at twelve Le Loi Street.","Tôi ở số mười hai đường Lê Lợi.");
+P(5,"Take this ticket and wait for your number.","Hãy lấy phiếu này và chờ đến số của anh/chị.","How long will I wait?","Tôi phải chờ bao lâu?");
+P(5,"Please go to room five for your check-up.","Xin hãy đến phòng năm để khám.","Where is room five?","Phòng năm ở đâu ạ?");
+P(5,"Please sit here. The nurse will call you.","Xin ngồi đây. Y tá sẽ gọi anh/chị.","Okay, I will wait here.","Vâng, tôi sẽ chờ ở đây.");
+P(5,"Thank you for waiting. Please come in.","Cảm ơn anh/chị đã chờ. Mời vào.","Thank you, doctor.","Cảm ơn bác sĩ.");
+
+/* Bài 7: Khai thác tiền sử bệnh cơ bản */
+T(6,"medical history","/ˈmedɪkl ˈhɪstri/","tiền sử bệnh","I need to ask about your medical history.","Tôi cần hỏi về tiền sử bệnh của anh/chị.");
+T(6,"chronic","/ˈkrɑːnɪk/","mạn tính","He has a chronic illness.","Ông ấy có bệnh mạn tính.");
+T(6,"allergic","/əˈlɜːrdʒɪk/","dị ứng","She is allergic to seafood.","Cô ấy dị ứng với hải sản.");
+T(6,"medicine","/ˈmedsn/","thuốc","What medicine do you take?","Anh/chị đang dùng thuốc gì?");
+T(6,"family history","/ˈfæməli ˈhɪstri/","tiền sử gia đình","Is there a family history of diabetes?","Gia đình có tiền sử đái tháo đường không?");
+T(6,"surgery","/ˈsɜːrdʒəri/","phẫu thuật","He had surgery two years ago.","Ông ấy đã phẫu thuật hai năm trước.");
+P(6,"Do you have any chronic illness?","Anh/chị có bệnh mạn tính nào không?","I have high blood pressure.","Tôi bị cao huyết áp.");
+P(6,"Are you allergic to any food or medicine?","Anh/chị có dị ứng thức ăn hay thuốc nào không?","I am allergic to seafood.","Tôi dị ứng hải sản.");
+P(6,"What medicine do you take every day?","Mỗi ngày anh/chị uống thuốc gì?","I take one pill for diabetes.","Tôi uống một viên thuốc tiểu đường.");
+P(6,"Have you ever been in the hospital?","Anh/chị đã từng nằm viện chưa?","Yes, two years ago.","Có, hai năm trước.");
+P(6,"Has anyone in your family had heart disease?","Trong gia đình có ai bị bệnh tim không?","Yes, my father had it.","Có, bố tôi bị.");
+P(6,"Do you smoke?","Anh/chị có hút thuốc không?","No, I have never smoked.","Không, tôi chưa từng hút thuốc.");
+P(6,"How often do you drink alcohol?","Anh/chị uống rượu bao lâu một lần?","Only on weekends.","Chỉ vào cuối tuần.");
+P(6,"Have you had any surgery?","Anh/chị đã từng phẫu thuật chưa?","Yes, I had an operation on my knee.","Có, tôi đã mổ đầu gối.");
+
+/* Bài 8: Dấu hiệu sinh tồn và các chỉ số cơ bản */
+T(7,"blood pressure","/blʌd ˈpreʃər/","huyết áp","I will check your blood pressure.","Tôi sẽ đo huyết áp cho anh/chị.");
+T(7,"pulse","/pʌls/","mạch","Your pulse is normal.","Mạch của anh/chị bình thường.");
+T(7,"temperature","/ˈtemprətʃər/","nhiệt độ, thân nhiệt","Your temperature is thirty-seven degrees.","Thân nhiệt của anh/chị là ba mươi bảy độ.");
+T(7,"heart rate","/hɑːrt reɪt/","nhịp tim","Your heart rate is a little fast.","Nhịp tim của anh/chị hơi nhanh.");
+T(7,"weight","/weɪt/","cân nặng","What is your weight?","Cân nặng của anh/chị là bao nhiêu?");
+T(7,"height","/haɪt/","chiều cao","Please tell me your height.","Xin cho tôi biết chiều cao của anh/chị.");
+P(7,"I am going to check your blood pressure.","Tôi sẽ đo huyết áp cho anh/chị.","Okay. Is it high?","Vâng. Có cao không ạ?");
+P(7,"Please sit still and relax your arm.","Xin ngồi yên và thả lỏng cánh tay.","Like this?","Như thế này ạ?");
+P(7,"Your temperature is thirty-seven degrees.","Thân nhiệt của anh/chị là ba mươi bảy độ.","Is that normal?","Vậy có bình thường không?");
+P(7,"Your heart rate is normal.","Nhịp tim của anh/chị bình thường.","That is good.","Vậy thì tốt.");
+P(7,"Please stand on the scale.","Xin đứng lên cân.","Do I take off my shoes?","Tôi có cần cởi giày không?");
+P(7,"How tall are you?","Anh/chị cao bao nhiêu?","I am one hundred sixty-five centimeters.","Tôi cao một mét sáu mươi lăm.");
+P(7,"How much do you weigh?","Anh/chị nặng bao nhiêu?","I weigh sixty kilos.","Tôi nặng sáu mươi ký.");
+P(7,"Your oxygen level is good.","Nồng độ oxy của anh/chị tốt.","That is good news.","Vậy là tin tốt.");
+
+/* Bài 9: Mô tả triệu chứng */
+T(8,"symptom","/ˈsɪmptəm/","triệu chứng","Tell me about your symptoms.","Hãy kể cho tôi nghe về các triệu chứng của anh/chị.");
+T(8,"hurt","/hɜːrt/","đau","My back hurts.","Lưng tôi đau.");
+T(8,"sore throat","/sɔːr θroʊt/","đau họng","I have a sore throat.","Tôi bị đau họng.");
+T(8,"runny nose","/ˈrʌni noʊz/","sổ mũi","She has a runny nose and a cough.","Cô ấy bị sổ mũi và ho.");
+T(8,"itchy","/ˈɪtʃi/","ngứa","My skin is itchy.","Da tôi bị ngứa.");
+T(8,"weak","/wiːk/","yếu, mệt","I feel weak today.","Hôm nay tôi thấy yếu người.");
+P(8,"What are your symptoms?","Anh/chị có triệu chứng gì?","I have a cough and a fever.","Tôi bị ho và sốt.");
+P(8,"Show me where it hurts.","Chỉ cho tôi chỗ đau.","It hurts here.","Đau ở đây.");
+P(8,"How long have you felt this way?","Anh/chị thấy như vậy bao lâu rồi?","For about two days.","Khoảng hai ngày.");
+P(8,"Is the pain getting better or worse?","Cơn đau đang đỡ hơn hay nặng hơn?","It is getting worse.","Nó đang nặng hơn.");
+P(8,"Do you have a sore throat?","Anh/chị có đau họng không?","Yes, it hurts when I swallow.","Có, đau khi tôi nuốt.");
+P(8,"Do you feel weak?","Anh/chị có thấy yếu người không?","Yes, I cannot walk far.","Có, tôi không đi xa được.");
+P(8,"Does anything make it better?","Có điều gì làm nó đỡ hơn không?","Resting helps a little.","Nghỉ ngơi đỡ được một chút.");
+P(8,"Is it itchy or painful?","Nó ngứa hay đau?","It is very itchy.","Nó rất ngứa.");
+
+/* Bài 10: Thực hành tiếp đón và tiếp nhận người bệnh (2) */
+T(9,"appointment","/əˈpɔɪntmənt/","cuộc hẹn khám","Do you have an appointment?","Anh/chị có hẹn khám không?");
+T(9,"check-up","/ˈtʃek ʌp/","khám sức khỏe","You need a check-up every year.","Anh/chị cần khám sức khỏe mỗi năm.");
+T(9,"medical record","/ˈmedɪkl ˈrekərd/","hồ sơ bệnh án","I will open your medical record.","Tôi sẽ mở hồ sơ bệnh án của anh/chị.");
+T(9,"referral","/rɪˈfɜːrəl/","giấy giới thiệu, chuyển tuyến","Do you have a referral from your doctor?","Anh/chị có giấy giới thiệu của bác sĩ không?");
+T(9,"examine","/ɪɡˈzæmɪn/","khám (bệnh)","The doctor will examine you now.","Bác sĩ sẽ khám cho anh/chị ngay bây giờ.");
+T(9,"doctor's office","/ˈdɑːktərz ˈɔːfɪs/","phòng khám của bác sĩ","Please follow me to the doctor's office.","Xin đi theo tôi đến phòng khám.");
+P(9,"Do you have an appointment?","Anh/chị có hẹn khám không?","Yes, at ten o'clock.","Có, lúc mười giờ.");
+P(9,"Do you have a referral letter?","Anh/chị có thư giới thiệu không?","Yes, from my family doctor.","Có, của bác sĩ gia đình tôi.");
+P(9,"I need to open your medical record.","Tôi cần mở hồ sơ bệnh án của anh/chị.","Do you need my ID?","Chị có cần thẻ căn cước không?");
+P(9,"The doctor is ready to see you.","Bác sĩ đã sẵn sàng khám cho anh/chị.","Thank you.","Cảm ơn chị.");
+P(9,"I will take your temperature before you go in.","Tôi sẽ đo thân nhiệt trước khi anh/chị vào.","Okay.","Vâng.");
+P(9,"Please tell the doctor all your symptoms.","Xin hãy nói với bác sĩ tất cả triệu chứng.","I will try.","Tôi sẽ cố gắng.");
+P(9,"Is there anything else you want to tell us?","Anh/chị còn điều gì muốn nói với chúng tôi không?","No, that is all.","Không, hết rồi ạ.");
+P(9,"Your family can wait outside.","Người nhà có thể chờ bên ngoài.","Okay, thank you.","Vâng, cảm ơn.");
+
+/* Bài 11: Hướng dẫn người bệnh trong quá trình khám, điều trị */
+T(10,"breathe","/briːð/","thở","Please breathe slowly.","Xin hãy thở chậm.");
+T(10,"lie down","/laɪ daʊn/","nằm xuống","Please lie down on the bed.","Xin nằm xuống giường.");
+T(10,"roll up","/roʊl ʌp/","xắn lên","Please roll up your sleeve.","Xin xắn tay áo lên.");
+T(10,"relax","/rɪˈlæks/","thư giãn","Try to relax your muscles.","Hãy cố thả lỏng cơ.");
+T(10,"turn over","/tɜːrn ˈoʊvər/","trở người, lật người","Please turn over onto your stomach.","Xin nằm sấp lại.");
+T(10,"swallow","/ˈswɑːloʊ/","nuốt","Swallow this pill with water.","Hãy nuốt viên thuốc này với nước.");
+P(10,"Please lie down on the bed.","Xin nằm xuống giường.","Here?","Ở đây ạ?");
+P(10,"Take a deep breath, please.","Xin hít một hơi thật sâu.","Like this?","Như thế này ạ?");
+P(10,"Open your mouth and say ah.","Há miệng và nói a.","Ahhh.","A.");
+P(10,"Roll up your sleeve, please.","Xin xắn tay áo lên.","Which arm?","Tay nào ạ?");
+P(10,"Turn over onto your stomach.","Nằm sấp lại.","Is this okay?","Như vậy được chưa ạ?");
+P(10,"Try to relax. It will not hurt much.","Hãy thư giãn. Sẽ không đau nhiều đâu.","I am a little afraid.","Tôi hơi sợ.");
+P(10,"Do not move, please.","Xin đừng cử động.","Okay, I will stay still.","Vâng, tôi sẽ nằm yên.");
+P(10,"You can sit up slowly now.","Bây giờ anh/chị có thể từ từ ngồi dậy.","I feel a little dizzy.","Tôi thấy hơi chóng mặt.");
+
+/* Bài 12: Giải thích các quy trình và thủ thuật y tế */
+T(11,"procedure","/prəˈsiːdʒər/","thủ thuật, quy trình","I will explain the procedure.","Tôi sẽ giải thích thủ thuật.");
+T(11,"anesthesia","/ˌænəsˈθiːʒə/","gây mê, gây tê","You will have local anesthesia.","Anh/chị sẽ được gây tê tại chỗ.");
+T(11,"ultrasound","/ˈʌltrəsaʊnd/","siêu âm","You need an ultrasound of your belly.","Anh/chị cần siêu âm bụng.");
+T(11,"blood sample","/blʌd ˈsæmpl/","mẫu máu","We need a blood sample.","Chúng tôi cần lấy mẫu máu.");
+T(11,"risk","/rɪsk/","nguy cơ, rủi ro","Every procedure has some risk.","Thủ thuật nào cũng có một số rủi ro.");
+T(11,"stitches","/ˈstɪtʃɪz/","mũi khâu","You will have five stitches.","Anh/chị sẽ được khâu năm mũi.");
+P(11,"I will explain the procedure to you.","Tôi sẽ giải thích thủ thuật cho anh/chị.","Yes, please.","Vâng, xin bác sĩ.");
+P(11,"It will take about thirty minutes.","Việc này mất khoảng ba mươi phút.","Will it hurt?","Có đau không ạ?");
+P(11,"You will feel a small pinch.","Anh/chị sẽ thấy hơi nhói một chút.","Okay, I am ready.","Vâng, tôi sẵn sàng.");
+P(11,"We will give you medicine so you do not feel pain.","Chúng tôi sẽ cho thuốc để anh/chị không thấy đau.","Will I be awake?","Tôi có tỉnh không?");
+P(11,"Please do not eat for six hours before.","Xin đừng ăn trong sáu giờ trước đó.","Can I drink water?","Tôi uống nước được không?");
+P(11,"Every procedure has some risks.","Thủ thuật nào cũng có một số rủi ro.","What are the risks?","Có những rủi ro gì ạ?");
+P(11,"We need your permission to start.","Chúng tôi cần sự đồng ý của anh/chị để bắt đầu.","Yes, you can start.","Vâng, bác sĩ có thể bắt đầu.");
+P(11,"After that, you will rest in the recovery room.","Sau đó, anh/chị sẽ nghỉ ở phòng hồi tỉnh.","How long will I stay there?","Tôi ở đó bao lâu?");
+
+/* Bài 13: Thời gian chờ đợi và các trường hợp chậm trễ */
+T(12,"wait","/weɪt/","chờ","Please wait here.","Xin chờ ở đây.");
+T(12,"delay","/dɪˈleɪ/","sự chậm trễ","There is a delay today.","Hôm nay có sự chậm trễ.");
+T(12,"busy","/ˈbɪzi/","bận, đông","The doctor is busy now.","Bác sĩ đang bận.");
+T(12,"soon","/suːn/","sớm, chẳng bao lâu nữa","The doctor will see you soon.","Bác sĩ sẽ khám cho anh/chị sớm thôi.");
+T(12,"minute","/ˈmɪnɪt/","phút","Please wait ten minutes.","Xin chờ mười phút.");
+T(12,"apologize","/əˈpɑːlədʒaɪz/","xin lỗi","We apologize for the wait.","Chúng tôi xin lỗi vì để anh/chị chờ.");
+P(12,"Please wait a moment.","Xin chờ một lát.","How long will it take?","Mất bao lâu ạ?");
+P(12,"The doctor is running late.","Bác sĩ đang đến muộn.","How late?","Muộn bao lâu?");
+P(12,"You will wait about twenty minutes.","Anh/chị sẽ chờ khoảng hai mươi phút.","That is okay.","Không sao ạ.");
+P(12,"I am sorry for the delay.","Tôi xin lỗi vì sự chậm trễ.","That is all right.","Không sao đâu.");
+P(12,"We are very busy today.","Hôm nay chúng tôi rất đông bệnh nhân.","I understand.","Tôi hiểu.");
+P(12,"Your turn is coming soon.","Sắp đến lượt anh/chị rồi.","Thank you for telling me.","Cảm ơn chị đã cho tôi biết.");
+P(12,"Would you like to sit in the waiting area?","Anh/chị có muốn ngồi ở khu vực chờ không?","Yes, I will wait there.","Có, tôi sẽ chờ ở đó.");
+P(12,"I will tell you if the time changes.","Tôi sẽ báo anh/chị nếu thời gian thay đổi.","Thank you, nurse.","Cảm ơn chị y tá.");
+
+/* Bài 14: Thanh toán và bảo hiểm */
+T(13,"payment","/ˈpeɪmənt/","sự thanh toán","Payment is at the cashier.","Thanh toán ở quầy thu ngân.");
+T(13,"receipt","/rɪˈsiːt/","biên lai","Please keep your receipt.","Xin giữ lại biên lai.");
+T(13,"cashier","/kæˈʃɪr/","thu ngân","Please go to the cashier.","Xin hãy đến quầy thu ngân.");
+T(13,"insurance","/ɪnˈʃʊrəns/","bảo hiểm","Do you have health insurance?","Anh/chị có bảo hiểm y tế không?");
+T(13,"bill","/bɪl/","hóa đơn","Here is your bill.","Đây là hóa đơn của anh/chị.");
+T(13,"fee","/fiː/","phí","There is a small fee for this service.","Dịch vụ này có một khoản phí nhỏ.");
+P(13,"Please go to the cashier to pay.","Xin đến quầy thu ngân để thanh toán.","Where is the cashier?","Quầy thu ngân ở đâu ạ?");
+P(13,"The total is two hundred thousand dong.","Tổng cộng là hai trăm nghìn đồng.","Can I pay by card?","Tôi trả bằng thẻ được không?");
+P(13,"Do you want to pay by cash or card?","Anh/chị muốn trả tiền mặt hay thẻ?","By card, please.","Bằng thẻ, làm ơn.");
+P(13,"Does your insurance cover this test?","Bảo hiểm của anh/chị có chi trả xét nghiệm này không?","I am not sure.","Tôi không chắc.");
+P(13,"Please keep your receipt.","Xin giữ lại biên lai.","Thank you.","Cảm ơn chị.");
+P(13,"Insurance will pay eighty percent.","Bảo hiểm sẽ trả tám mươi phần trăm.","I pay the rest, right?","Tôi trả phần còn lại, đúng không?");
+P(13,"You can pay at the front desk.","Anh/chị có thể thanh toán ở quầy lễ tân.","Is it open now?","Bây giờ quầy có mở không?");
+P(13,"Here is your bill.","Đây là hóa đơn của anh/chị.","Can you explain it, please?","Chị giải thích giúp tôi được không?");
+
+/* Bài 15: Kết thúc giao tiếp với người bệnh */
+T(14,"goodbye","/ˌɡʊdˈbaɪ/","tạm biệt","Goodbye, and see you next week.","Tạm biệt, hẹn gặp lại anh/chị tuần sau.");
+T(14,"take care","/teɪk ker/","giữ gìn sức khỏe","Please take care of yourself.","Xin anh/chị hãy giữ gìn sức khỏe.");
+T(14,"get well","/ɡet wel/","mau khỏe","I hope you get well soon.","Tôi mong anh/chị mau khỏe.");
+T(14,"instruction","/ɪnˈstrʌkʃn/","lời dặn, hướng dẫn","Please read the instruction sheet.","Xin đọc tờ hướng dẫn.");
+T(14,"contact","/ˈkɑːntækt/","liên hệ","Contact us if you have a problem.","Hãy liên hệ chúng tôi nếu có vấn đề.");
+T(14,"follow-up","/ˈfɑːloʊ ʌp/","tái khám","You need a follow-up visit next week.","Anh/chị cần tái khám vào tuần sau.");
+P(14,"Do you have any questions?","Anh/chị có câu hỏi nào không?","No, everything is clear.","Không, mọi thứ đều rõ.");
+P(14,"That is all for today.","Hôm nay đến đây thôi.","Thank you, doctor.","Cảm ơn bác sĩ.");
+P(14,"Please follow these instructions at home.","Xin làm theo hướng dẫn này ở nhà.","I will follow them.","Tôi sẽ làm theo.");
+P(14,"Come back next week for a check-up.","Tuần sau hãy quay lại khám.","Which day?","Ngày nào ạ?");
+P(14,"Call us if you feel worse.","Hãy gọi chúng tôi nếu anh/chị thấy nặng hơn.","What is the number?","Số điện thoại là gì ạ?");
+P(14,"Take care of yourself.","Xin hãy giữ gìn sức khỏe.","Thank you. Goodbye.","Cảm ơn. Tạm biệt.");
+P(14,"I hope you get well soon.","Tôi mong anh/chị mau khỏe.","Thank you for your help.","Cảm ơn sự giúp đỡ của bác sĩ.");
+P(14,"It was nice talking to you.","Rất vui được nói chuyện với anh/chị.","You too. Have a good day.","Bác sĩ cũng vậy. Chúc một ngày tốt lành.");
+
+/* Bài 16: Ôn tập và củng cố kiến thức */
+T(15,"review","/rɪˈvjuː/","ôn lại","Let us review what we learned.","Hãy ôn lại những gì đã học.");
+T(15,"practice","/ˈpræktɪs/","luyện tập","You need to practice every day.","Anh/chị cần luyện tập mỗi ngày.");
+T(15,"repeat","/rɪˈpiːt/","nhắc lại","Please repeat the number.","Xin nhắc lại con số.");
+T(15,"slowly","/ˈsloʊli/","chậm","Please speak slowly.","Xin nói chậm thôi.");
+T(15,"clearly","/ˈklɪrli/","rõ ràng","Please speak clearly.","Xin nói rõ ràng.");
+T(15,"understand","/ˌʌndərˈstænd/","hiểu","Do you understand me?","Anh/chị có hiểu tôi không?");
+P(15,"Could you say that again, please?","Anh/chị nói lại được không?","Of course. Take one pill a day.","Tất nhiên. Uống một viên mỗi ngày.");
+P(15,"Please speak more slowly.","Xin nói chậm hơn.","Sure. I will speak slowly.","Được. Tôi sẽ nói chậm.");
+P(15,"What does this word mean?","Từ này nghĩa là gì?","It means you feel sick in your stomach.","Nó nghĩa là anh/chị thấy khó chịu trong bụng.");
+P(15,"Let me check if I understand.","Để tôi kiểm tra xem tôi hiểu đúng chưa.","Yes, that is right.","Vâng, đúng rồi.");
+P(15,"Can you spell that for me?","Anh/chị đánh vần giúp tôi được không?","Yes, B-R-O-W-N.","Vâng, B-R-O-W-N.");
+P(15,"I am sorry, I did not understand.","Xin lỗi, tôi chưa hiểu.","No problem. I will explain again.","Không sao. Tôi sẽ giải thích lại.");
+P(15,"Please tell me your problem in your own words.","Xin hãy kể vấn đề của anh/chị bằng lời của mình.","I have had a headache for three days.","Tôi bị đau đầu ba ngày rồi.");
+P(15,"Let us practice together.","Chúng ta cùng luyện tập nhé.","Okay, I am ready.","Vâng, tôi sẵn sàng.");
+
+var ITEMS=RAW.map(function(r,i){return {id:i,g:r[0],t:r[1],e:r[2],ipa:r[3],m:r[4],ex:r[5],exm:r[6]};});
+
+/* ===== TRẠNG THÁI ===== */
+var KEY="ta16_progress_v1", prog={};
+try{prog=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){prog={};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(prog));}catch(e){}}
+function st(i){return prog[i]||(prog[i]={s:0,k:0,c:0,a:0});}
+function sOf(i){var s=prog[i];return s?s.s:0;}
+function stats(){var l=0,n=0,u=0,c=0,a=0;
+  ITEMS.forEach(function(it){var s=prog[it.id];var v=s?s.s:0;if(v===2)l++;else if(v===1)n++;else u++;if(s){c+=s.c;a+=s.a;}});
+  return {learned:l,learning:n,unopened:u,acc:a?Math.round(c/a*100):0};}
+
+var $=function(id){return document.getElementById(id);};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+/* ===== PHÁT ÂM ===== */
+function ttsOk(){return ('speechSynthesis' in window)&&('SpeechSynthesisUtterance' in window);}
+function fallbackListen(t){} /* không mở trang ngoài khi máy không đọc được */
+function doSpeak(text){
+  if(speechSynthesis.speaking||speechSynthesis.pending)speechSynthesis.cancel();
+  try{speechSynthesis.resume();}catch(e){}
+  var u=new SpeechSynthesisUtterance(text);u.lang="en-US";u.rate=.9;
+  var vs=speechSynthesis.getVoices()||[];
+  var v=vs.filter(function(x){return /en[-_]US/i.test(x.lang);})[0]||vs.filter(function(x){return /^en/i.test(x.lang);})[0];
+  if(v)u.voice=v;
+  var started=false;u.onstart=function(){started=true;};
+  u.onerror=function(){fallbackListen(text);};
+  speechSynthesis.speak(u);
+}
+function speak(text){
+  if(!ttsOk()){fallbackListen(text);return;}
+  try{var vs=speechSynthesis.getVoices()||[];
+    if(!vs.length){var done=false,once=function(){if(done)return;done=true;doSpeak(text);};speechSynthesis.onvoiceschanged=once;setTimeout(once,600);}
+    else doSpeak(text);
+  }catch(e){fallbackListen(text);}
+}
+var SPK='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/></svg>';
+
+/* ===== ĐIỀU HƯỚNG ===== */
+function show(name){
+  ['home','list','session','summary','review','fill'].forEach(function(v){$('v-'+v).hidden=(v!==name);});
+  window.scrollTo(0,0);
+}
+
+/* ===== TRANG CHÍNH ===== */
+function renderHome(){
+  var s=stats();
+  $('t-learned').textContent=s.learned;$('t-learning').textContent=s.learning;
+  $('t-acc').textContent=s.acc+'%';$('t-unopened').textContent=s.unopened;
+  renderDecks();
+}
+
+/* ===== DANH SÁCH THUẬT NGỮ ===== */
+function renderList(q){
+  q=(q||'').trim().toLowerCase();
+  var html='';
+  GROUPS.forEach(function(gn,gi){
+    var all=ITEMS.filter(function(it){return it.g===gi;});
+    var done=all.filter(function(it){return sOf(it.id)===2;}).length;
+    var items=all.filter(function(it){return !q||it.e.toLowerCase().indexOf(q)>-1||it.m.toLowerCase().indexOf(q)>-1;});
+    if(!items.length)return;
+    html+='<div class="ghead pad"><span style="color:var(--ink);font-size:.96rem">'+esc(gn)+'</span><span>'+done+'/'+all.length+'</span></div><div class="rows">';
+    items.forEach(function(it){
+      var v=sOf(it.id),cls=v===2?'d':(v===1?'l':'u');
+      html+='<div class="row" data-id="'+it.id+'"><button class="rowhead pad" aria-expanded="false"><i class="dot '+cls+'"></i>'+
+        '<span class="rt"><b>'+esc(it.e)+'</b><small>'+esc(it.m)+'</small></span>'+
+        '<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>'+
+        '<div class="rowbody pad" hidden>'+(it.ipa?'<span class="ipa">'+esc(it.ipa)+'</span>':'')+
+        '<span class="exen">'+esc(it.ex)+'</span><span class="exvi">'+esc(it.exm)+'</span>'+
+        '<button class="spk" data-say="'+esc(it.e)+'">'+SPK+' Nghe '+(it.t==='P'?'câu':'từ')+'</button>'+
+        '<button class="spk" data-say="'+esc(it.ex)+'">'+SPK+' Nghe ví dụ</button></div></div>';
+    });
+    html+='</div>';
+  });
+  $('listbody').innerHTML=html||'<div class="empty">Không tìm thấy mục nào.</div>';
+}
+$('listbody').addEventListener('click',function(e){
+  var sp=e.target.closest('.spk');
+  if(sp){speak(sp.getAttribute('data-say'));return;}
+  var h=e.target.closest('.rowhead');
+  if(h){var row=h.parentNode,body=row.querySelector('.rowbody');var open=body.hidden;body.hidden=!open;row.classList.toggle('open',open);h.setAttribute('aria-expanded',open);}
+});
+$('q').addEventListener('input',function(){renderList(this.value);});
+$('open-list').addEventListener('click',function(){$('q').value='';renderList('');show('list');});
+$('list-back').addEventListener('click',function(){renderHome();show('home');});
+
+/* ===== SHEET CHỌN NỘI DUNG ===== */
+var scope='all',size=10;
+var sheet=$('sheet'),backdrop=$('backdrop');
+function renderChoices(){
+  var s=stats();
+  var html='<button class="choice'+(scope==='all'?' on':'')+'" data-g="all"><span>Tất cả các bài</span><small>'+s.learned+'/'+ITEMS.length+' đã học</small></button>';
+  GROUPS.forEach(function(gn,gi){
+    var all=ITEMS.filter(function(it){return it.g===gi;});
+    var d=all.filter(function(it){return sOf(it.id)===2;}).length;
+    html+='<button class="choice'+(scope===gi?' on':'')+'" data-g="'+gi+'"><span>'+esc(gn)+'</span><small>'+d+'/'+all.length+'</small></button>';
+  });
+  $('choices').innerHTML=html;
+}
+function openSheet(){renderChoices();backdrop.hidden=false;sheet.hidden=false;
+  requestAnimationFrame(function(){backdrop.classList.add('show');sheet.classList.add('show');});}
+function closeSheet(){backdrop.classList.remove('show');sheet.classList.remove('show');
+  setTimeout(function(){backdrop.hidden=true;sheet.hidden=true;},300);}
+$('start').addEventListener('click',openSheet);
+backdrop.addEventListener('click',closeSheet);
+$('choices').addEventListener('click',function(e){var b=e.target.closest('.choice');if(!b)return;
+  var g=b.getAttribute('data-g');scope=(g==='all')?'all':parseInt(g,10);renderChoices();});
+$('sizes').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  size=parseInt(b.getAttribute('data-n'),10);
+  Array.prototype.forEach.call($('sizes').children,function(x){x.classList.toggle('on',x===b);});});
+$('go').addEventListener('click',function(){closeSheet();startSession(scope,size);});
+
+/* ===== PHIÊN HỌC ===== */
+var S=null;
+function startSession(sc,n){
+  var pool=ITEMS.filter(function(it){return sc==='all'||it.g===sc;});
+  var learning=shuffle(pool.filter(function(it){return sOf(it.id)===1;}));
+  var fresh=pool.filter(function(it){return sOf(it.id)===0;});
+  var done=shuffle(pool.filter(function(it){return sOf(it.id)===2;}));
+  var takeL=Math.min(learning.length,Math.ceil(n/2));
+  var picked=learning.slice(0,takeL);
+  picked=picked.concat(fresh.slice(0,n-picked.length));
+  if(picked.length<n)picked=picked.concat(learning.slice(takeL,takeL+n-picked.length));
+  if(picked.length<n)picked=picked.concat(done.slice(0,n-picked.length));
+  if(!picked.length)return;
+  picked=shuffle(picked);
+  S={queue:picked.map(function(it){return {id:it.id,req:0};}),total:picked.length,finished:0,
+     answered:0,correct:0,newLearned:0,introduced:{},answeredNow:false};
+  show('session');nextStep();
+}
+function setProg(){
+  $('s-prog').style.width=(S.total?S.finished/S.total*100:0)+'%';
+  $('s-count').textContent=Math.min(S.finished+1,S.total)+'/'+S.total;
+}
+function nextStep(){
+  S.answeredNow=false;$('s-cta').hidden=true;
+  if(!S.queue.length){finish();return;}
+  setProg();
+  var q=S.queue[0],it=ITEMS[q.id];
+  if(sOf(it.id)===0&&!S.introduced[it.id]){renderIntro(it);return;}
+  renderQuiz(it,q);
+}
+function renderIntro(it){
+  $('s-body').innerHTML=
+    '<span class="qlabel new">'+(it.t==='P'?'Câu mới':'Từ mới')+'</span>'+
+    '<div class="qcard"><div class="qen">'+esc(it.e)+'</div>'+(it.ipa?'<span class="ipa">'+esc(it.ipa)+'</span>':'')+
+    '<div class="qmean">'+esc(it.m)+'</div>'+
+    '<button class="spk" data-say="'+esc(it.e)+'">'+SPK+' Nghe</button>'+
+    '<div class="exbox"><span class="qlabel">Ví dụ</span><span class="exen">'+esc(it.ex)+'</span><span class="exvi">'+esc(it.exm)+'</span>'+
+    '<button class="spk" data-say="'+esc(it.ex)+'">'+SPK+' Nghe ví dụ</button></div></div>';
+  $('s-next').textContent='Đã hiểu, làm bài';
+  $('s-next').onclick=function(){S.introduced[it.id]=true;var s=st(it.id);if(s.s===0)s.s=1;save();
+    renderQuiz(it,S.queue[0]);$('s-cta').hidden=true;window.scrollTo(0,0);};
+  $('s-cta').hidden=false;
+  speak(it.e);
+}
+function pickOptions(it,field){
+  var pool=ITEMS.filter(function(x){return x.t===it.t&&x.id!==it.id&&x[field]!==it[field];});
+  var seen={};seen[it[field]]=1;var out=[];
+  shuffle(pool).forEach(function(x){if(out.length<3&&!seen[x[field]]){seen[x[field]]=1;out.push(x[field]);}});
+  return shuffle(out.concat([it[field]]));
+}
+function renderQuiz(it,q){
+  var types=['en2vi','vi2en'];
+  if(ttsOk()&&(speechSynthesis.getVoices()||[]).length&&q.req>0)types.push('listen');
+  var type=types[Math.floor(Math.random()*types.length)];
+  var field=(type==='vi2en')?'e':'m';
+  var opts=pickOptions(it,field);
+  var label,prompt;
+  if(type==='en2vi'){label='Chọn nghĩa đúng';prompt='<div class="qen">'+esc(it.e)+'</div>'+(it.ipa?'<span class="ipa">'+esc(it.ipa)+'</span>':'')+
+    '<button class="spk" data-say="'+esc(it.e)+'">'+SPK+' Nghe</button>';}
+  else if(type==='vi2en'){label='Chọn cách nói tiếng Anh';prompt='<div class="qvi">'+esc(it.m)+'</div>';}
+  else{label='Nghe và chọn nghĩa đúng';prompt='<button class="spk" data-say="'+esc(it.e)+'">'+SPK+' Nghe lại</button>'+
+    '<button class="txtbtn" id="reveal">Hiện chữ</button><div class="qen" id="revtxt" hidden>'+esc(it.e)+'</div>';}
+  $('s-body').innerHTML='<span class="qlabel">'+label+'</span><div class="qcard">'+prompt+'</div>'+
+    '<div class="opts" id="opts">'+opts.map(function(o){return '<button class="opt" data-v="'+esc(o)+'">'+esc(o)+'</button>';}).join('')+'</div>'+
+    '<div id="fb"></div>';
+  var rv=$('reveal');if(rv)rv.onclick=function(){$('revtxt').hidden=false;rv.hidden=true;};
+  if(type==='listen')speak(it.e);
+  $('opts').onclick=function(e){
+    var b=e.target.closest('.opt');if(!b||S.answeredNow)return;
+    S.answeredNow=true;
+    answer(it,q,b.getAttribute('data-v')===it[field],b,field);
+  };
+}
+function answer(it,q,ok,btn,field){
+  var s=st(it.id);s.a++;S.answered++;
+  if(s.s===0)s.s=1;
+  if(ok){s.c++;s.k++;S.correct++;}else{s.k=0;}
+  var mastered=false;
+  if(ok&&s.k>=2){if(s.s!==2)S.newLearned++;s.s=2;mastered=true;}
+  save();
+  Array.prototype.forEach.call(document.querySelectorAll('#opts .opt'),function(b){
+    b.disabled=true;if(b.getAttribute('data-v')===it[field])b.classList.add('ok');
+  });
+  if(!ok)btn.classList.add('bad');
+  $('revtxt')&&($('revtxt').hidden=false);
+  $('fb').innerHTML='<div class="fb"><span class="head '+(ok?'ok':'bad')+'">'+(ok?(mastered?'Chính xác. Đã thuộc mục này!':'Chính xác!'):'Chưa đúng')+'</span>'+
+    '<b>'+esc(it.e)+'</b><span>'+esc(it.m)+'</span>'+(it.ipa?'<span class="ipa">'+esc(it.ipa)+'</span>':'')+
+    '<span class="exen">'+esc(it.ex)+'</span><span class="exvi">'+esc(it.exm)+'</span>'+
+    '<button class="spk" data-say="'+esc(it.ex)+'">'+SPK+' Nghe cả câu</button></div>';
+  S.queue.shift();
+  if(!mastered&&q.req<3){
+    var item={id:it.id,req:q.req+1};
+    if(ok)S.queue.push(item);else S.queue.splice(Math.min(3,S.queue.length),0,item);
+  }else S.finished++;
+  $('s-next').textContent=(S.queue.length?'Tiếp tục':'Xem kết quả');
+  $('s-next').onclick=nextStep;
+  $('s-cta').hidden=false;
+  setProg();
+  setTimeout(function(){var f=$('fb');if(f&&f.scrollIntoView)f.scrollIntoView({block:'nearest',behavior:'smooth'});},60);
+}
+$('s-body').addEventListener('click',function(e){var sp=e.target.closest('.spk');if(sp)speak(sp.getAttribute('data-say'));});
+$('s-close').addEventListener('click',function(){S=null;renderHome();show('home');});
+
+function finish(){
+  var acc=S.answered?Math.round(S.correct/S.answered*100):0;
+  var st2=stats();
+  $('sum-body').innerHTML='<h2>Hoàn thành lượt học</h2><div class="bigpct">'+acc+'%</div><p>'+S.correct+' đúng trên '+S.answered+' câu trả lời</p>'+
+    '<div class="tiles"><div class="tile"><span class="l">Mục mới thuộc</span><span class="v">'+S.newLearned+'</span></div>'+
+    '<div class="tile"><span class="l">Tổng đã học</span><span class="v">'+st2.learned+'/'+ITEMS.length+'</span></div></div>'+
+    '<div class="btnrow" style="margin-top:6px"><button class="btn sec2" id="sum-home">Về trang chính</button><button class="btn" id="sum-more">Học tiếp</button></div>';
+  $('sum-home').onclick=function(){S=null;renderHome();show('home');};
+  $('sum-more').onclick=function(){S=null;renderHome();show('home');openSheet();};
+  $('s-cta').hidden=true;show('summary');
+}
+
+/* ===== ĐẶT LẠI & GIAO DIỆN ===== */
+var armed=false,armT=null;
+$('reset').addEventListener('click',function(){
+  var b=this;
+  if(!armed){armed=true;b.textContent='Bấm lại để xác nhận xóa';clearTimeout(armT);armT=setTimeout(function(){armed=false;b.textContent='Đặt lại tiến độ';},3500);return;}
+  prog={};save();srs={};ssave();fillst={};fsave();armed=false;b.textContent='Đặt lại tiến độ';renderHome();
+});
+var tbtn=$('theme');
+var SUN='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+var MOON='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg>';
+function curTheme(){var a=document.documentElement.getAttribute('data-theme');if(a)return a;
+  return window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
+function syncIcon(){tbtn.innerHTML=curTheme()==='dark'?SUN:MOON;}
+try{var sv=localStorage.getItem('ta16_theme');if(sv)document.documentElement.setAttribute('data-theme',sv);}catch(e){}
+syncIcon();
+tbtn.addEventListener('click',function(){var n=curTheme()==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('ta16_theme',n);}catch(e){}syncIcon();});
+
+if(ttsOk())speechSynthesis.getVoices();
+/* ===== ÔN TẬP KIỂU ANKI (lặp lại ngắt quãng, kiểu SM-2) =====
+   Bước học: 1 phút, 10 phút. Tốt nghiệp: 1 ngày (Dễ: 4 ngày).
+   Thẻ đã thuộc: Khó ×1,2 · Tốt ×độ dễ · Dễ ×độ dễ×1,3. Quên: học lại 10 phút, khoảng cách còn một nửa. */
+var SKEY="ta16_srs_v1", srs={};
+try{srs=JSON.parse(localStorage.getItem(SKEY)||"{}")||{};}catch(e){srs={};}
+function ssave(){try{localStorage.setItem(SKEY,JSON.stringify(srs));}catch(e){}}
+var MIN=60000, DAY=86400000, STEPS=[1,10], RSTEP=10, LEARN_AHEAD=20*MIN;
+function card(id){return srs[id]||{q:'new',step:0,ivl:0,ease:2.5,due:0,reps:0,lapses:0};}
+function dayEnd(){var d=new Date();d.setHours(23,59,59,999);return d.getTime();}
+function counts(ids){var now=Date.now(),de=dayEnd(),n=0,l=0,r=0;
+  ids.forEach(function(id){var c=card(id);
+    if(c.q==='new')n++;
+    else if(c.q==='learn'||c.q==='relearn'){if(c.due<=now+LEARN_AHEAD)l++;}
+    else if(c.due<=de)r++;});
+  return {n:n,l:l,r:r};}
+function idsOf(g){return ITEMS.filter(function(it){return g==='all'||it.g===g;}).map(function(it){return it.id;});}
+function cnum(v,cls){return '<span class="'+cls+(v?'':' z')+'">'+v+'</span>';}
+var FKEY="ta16_fill_v1", fillst={}, RMODE='anki';
+try{fillst=JSON.parse(localStorage.getItem(FKEY)||"{}")||{};}catch(e){fillst={};}
+try{RMODE=localStorage.getItem('ta16_rmode')==='fill'?'fill':'anki';}catch(e){}
+function fsave(){try{localStorage.setItem(FKEY,JSON.stringify(fillst));}catch(e){}}
+function fmastered(id){return (fillst[id]&&fillst[id].s>=2)?1:0;}
+function renderDecks(){
+  var el=$('decks');if(!el)return;
+  Array.prototype.forEach.call(document.querySelectorAll('#rmode button'),function(b){b.classList.toggle('on',b.getAttribute('data-m')===RMODE);});
+  var html='';
+  if(RMODE==='fill'){
+    $('srs-intro').textContent='Mỗi bài 14 câu. Đọc nghĩa tiếng Việt, gõ từ còn thiếu vào chỗ trống. Trả lời đúng liên tiếp 2 lần (không dùng gợi ý) thì tính là đã nhớ. Câu sai sẽ được hỏi lại ngay trong lượt.';
+    $('srs-legend').innerHTML='<span><b class="c-rev">Số xanh</b> câu đã nhớ trên tổng số câu của bài</span>';
+    GROUPS.forEach(function(gn,gi){var ids=idsOf(gi),m=ids.reduce(function(a,id){return a+fmastered(id);},0);
+      html+='<button class="deck" data-g="'+gi+'"><span class="dn">'+esc(gn)+'</span><span class="cnt"><span class="c-rev'+(m?'':' z')+'">'+m+'</span><span class="c-new">/'+ids.length+'</span></span></button>';});
+    var al=idsOf('all'),am=al.reduce(function(a,id){return a+fmastered(id);},0);
+    html+='<button class="deck all" data-g="all"><span class="dn">20 câu yếu nhất từ mọi bài</span><span class="cnt"><span class="c-rev'+(am?'':' z')+'">'+am+'</span><span class="c-new">/'+al.length+'</span></span></button>';
+  }else{
+    $('srs-intro').textContent='Mỗi bài 14 thẻ. Xem mặt trước, tự nhớ, bấm hiện đáp án rồi tự chấm. Thẻ nhớ kém sẽ quay lại sớm, thẻ nhớ tốt được giãn ra nhiều ngày sau.';
+    $('srs-legend').innerHTML='<span><b class="c-new">Xanh dương</b> thẻ mới</span><span><b class="c-lrn">Đỏ</b> đang học</span><span><b class="c-rev">Xanh lá</b> đến hạn ôn</span>';
+    GROUPS.forEach(function(gn,gi){var c=counts(idsOf(gi));
+      html+='<button class="deck" data-g="'+gi+'"><span class="dn">'+esc(gn)+'</span><span class="cnt">'+cnum(c.n,'c-new')+cnum(c.l,'c-lrn')+cnum(c.r,'c-rev')+'</span></button>';});
+    var a=counts(idsOf('all'));
+    html+='<button class="deck all" data-g="all"><span class="dn">Ôn tất cả các bài</span><span class="cnt">'+cnum(a.n,'c-new')+cnum(a.l,'c-lrn')+cnum(a.r,'c-rev')+'</span></button>';
+  }
+  el.innerHTML=html;
+}
+$('rmode').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  RMODE=b.getAttribute('data-m')==='fill'?'fill':'anki';try{localStorage.setItem('ta16_rmode',RMODE);}catch(x){}renderDecks();});
+$('decks').addEventListener('click',function(e){var b=e.target.closest('.deck');if(!b)return;
+  var g=b.getAttribute('data-g');g=(g==='all'?'all':parseInt(g,10));
+  if(RMODE==='fill')startFill(g);else startReview(g);});
+
+function fmtIvl(ms){
+  if(ms<60*MIN)return Math.max(1,Math.round(ms/MIN))+' phút';
+  if(ms<DAY*0.9)return Math.round(ms/(60*MIN))+' giờ';
+  var d=ms/DAY; if(d<30)return Math.round(d)+' ngày';
+  if(d<365)return (Math.round(d/30*10)/10)+' tháng';
+  return (Math.round(d/365*10)/10)+' năm';
+}
+/* trả về thẻ mới sau khi chấm: 1 Lại, 2 Khó, 3 Tốt, 4 Dễ */
+function schedule(c0,g,now){
+  var c=JSON.parse(JSON.stringify(c0));
+  if(c.q==='new'){c.q='learn';c.step=0;}
+  if(c.q==='learn'){
+    if(g===1){c.step=0;c.due=now+STEPS[0]*MIN;}
+    else if(g===2){var cur=STEPS[c.step],nx=STEPS[c.step+1]||cur*1.5;c.due=now+Math.round((cur+(c.step===0?nx:cur))/2)*MIN;}
+    else if(g===3){if(c.step+1<STEPS.length){c.step++;c.due=now+STEPS[c.step]*MIN;}else{c.q='review';c.ivl=1;c.due=now+DAY;}}
+    else{c.q='review';c.ivl=4;c.due=now+4*DAY;}
+  }else if(c.q==='relearn'){
+    if(g===1){c.due=now+RSTEP*MIN;}
+    else if(g===2){c.due=now+Math.round(RSTEP*1.5)*MIN;}
+    else{c.q='review';if(g===4)c.ivl=Math.max(c.ivl+1,Math.round(c.ivl*1.5));c.due=now+c.ivl*DAY;}
+  }else{
+    if(g===1){c.lapses++;c.ease=Math.max(1.3,c.ease-0.2);c.ivl=Math.max(1,Math.round(c.ivl*0.5));c.q='relearn';c.due=now+RSTEP*MIN;}
+    else{var ni;
+      if(g===2){ni=c.ivl*1.2;c.ease=Math.max(1.3,c.ease-0.15);}
+      else if(g===3){ni=c.ivl*c.ease;}
+      else{ni=c.ivl*c.ease*1.3;c.ease+=0.15;}
+      ni=Math.max(c.ivl+1,Math.round(ni));
+      if(g===4){var good=Math.max(c.ivl+1,Math.round(c.ivl*(c.ease-0.15)));ni=Math.max(ni,good+1);}
+      c.ivl=ni;c.due=now+ni*DAY;}
+  }
+  c.reps++;return c;
+}
+
+var R=null;
+function startReview(g){
+  R={g:g,ids:idsOf(g),done:0,again:0,cur:null,shown:false};
+  $('rv-title').textContent=(g==='all'?'Ôn tất cả các bài':GROUPS[g]);
+  show('review');nextCard();
+}
+function pickNext(){
+  var now=Date.now(),de=dayEnd(),lrn=[],rev=[],nw=[];
+  R.ids.forEach(function(id){var c=card(id);
+    if(c.q==='new')nw.push(id);
+    else if(c.q==='learn'||c.q==='relearn')lrn.push(id);
+    else if(c.due<=de)rev.push(id);});
+  lrn.sort(function(a,b){return card(a).due-card(b).due;});
+  if(lrn.length&&card(lrn[0]).due<=now)return lrn[0];
+  if(rev.length){rev.sort(function(a,b){return card(a).due-card(b).due;});return rev[0];}
+  if(nw.length)return nw[0];
+  if(lrn.length&&card(lrn[0]).due<=now+LEARN_AHEAD)return lrn[0];
+  return null;
+}
+function topCounts(curId){
+  var c=counts(R.ids),cc=curId!=null?card(curId).q:null;
+  var cls=function(q){return q==='new'?'n':(q==='review'?'r':'l');}(cc);
+  return '<div class="rv-top"><span class="c-new'+(cls==='n'?' on':'')+'">'+c.n+'</span><span class="c-lrn'+(cls==='l'?' on':'')+'">'+c.l+'</span><span class="c-rev'+(cls==='r'?' on':'')+'">'+c.r+'</span></div>';
+}
+function nextCard(){
+  var id=pickNext();
+  if(id==null){reviewDone();return;}
+  R.cur=id;R.shown=false;
+  var it=ITEMS[id];
+  $('rv-body').innerHTML=topCounts(id)+
+    '<div class="rcard"><span class="qlabel">'+(it.t==='P'?'Câu mẫu':'Từ vựng')+'</span>'+
+    '<div class="qen">'+esc(it.e)+'</div>'+
+    '<button class="spk" data-say="'+esc(it.e)+'">'+SPK+' Nghe</button>'+
+    '<div id="rv-back" hidden style="width:100%;display:flex;flex-direction:column;gap:10px;align-items:center"></div></div>';
+  $('rv-actions').innerHTML='<button class="btn" id="rv-show">Hiện đáp án</button>';
+  $('rv-cta').hidden=false;
+  $('rv-show').onclick=showAnswer;
+  speak(it.e);
+  window.scrollTo(0,0);
+}
+function showAnswer(){
+  if(!R||R.shown)return;R.shown=true;
+  var it=ITEMS[R.cur],c=card(R.cur),now=Date.now();
+  var back=$('rv-back');
+  back.innerHTML='<hr class="rdiv">'+(it.ipa?'<span class="ipa">'+esc(it.ipa)+'</span>':'')+
+    '<div class="rmean">'+esc(it.m)+'</div>'+
+    '<div class="exbox"><span class="exen">'+esc(it.ex)+'</span><span class="exvi">'+esc(it.exm)+'</span>'+
+    '<button class="spk" data-say="'+esc(it.ex)+'">'+SPK+' Nghe ví dụ</button></div>';
+  back.hidden=false;
+  var lab=['Lại','Khó','Tốt','Dễ'],cls=['g-again','g-hard','g-good','g-easy'],h='<div class="grades">';
+  for(var g=1;g<=4;g++){var nc=schedule(c,g,now);
+    h+='<button class="grade '+cls[g-1]+'" data-g="'+g+'">'+lab[g-1]+'<small>'+fmtIvl(nc.due-now)+'</small></button>';}
+  $('rv-actions').innerHTML=h+'</div>';
+  $('rv-actions').querySelector('.grades').onclick=function(e){var b=e.target.closest('.grade');if(b)grade(parseInt(b.getAttribute('data-g'),10));};
+}
+function grade(g){
+  if(!R||!R.shown)return;
+  srs[R.cur]=schedule(card(R.cur),g,Date.now());ssave();
+  R.done++;if(g===1)R.again++;
+  nextCard();
+}
+function reviewDone(){
+  var now=Date.now(),soon=null;
+  R.ids.forEach(function(id){var c=card(id);if(c.q!=='new'&&(soon===null||c.due<soon))soon=c.due;});
+  var nextTxt=soon?('Lần ôn tiếp theo của bài này: sau '+fmtIvl(Math.max(MIN,soon-now))+'.'):'';
+  $('rv-body').innerHTML='<div class="rdone"><h2>'+(R.done?'Xong lượt ôn hôm nay':'Chưa có thẻ nào đến hạn')+'</h2>'+
+    (R.done?'<p>Đã ôn '+R.done+' lượt thẻ, bấm "Lại" '+R.again+' lần.</p>':'')+'<p>'+nextTxt+'</p></div>';
+  $('rv-actions').innerHTML='<button class="btn" id="rv-home">Về trang chính</button>';
+  $('rv-home').onclick=function(){R=null;renderHome();show('home');};
+  $('rv-cta').hidden=false;
+}
+$('rv-body').addEventListener('click',function(e){var sp=e.target.closest('.spk');if(sp){speak(sp.getAttribute('data-say'));return;}
+  if(R&&!R.shown&&e.target.closest('.rcard'))showAnswer();});
+$('rv-close').addEventListener('click',function(){R=null;renderHome();show('home');});
+document.addEventListener('keydown',function(e){
+  if(!R||$('v-review').hidden)return;
+  if(!R.shown&&(e.key===' '||e.key==='Enter')){e.preventDefault();showAnswer();}
+  else if(R.shown&&/^[1-4]$/.test(e.key))grade(parseInt(e.key,10));
+  else if(R.shown&&e.key===' '){e.preventDefault();grade(3);}
+});
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&!$('v-home').hidden)renderDecks();});
+
+/* ===== ĐIỀN TỪ ===== */
+var STOP={'the':1,'you':1,'your':1,'are':1,'have':1,'this':1,'that':1,'with':1,'what':1,'when':1,'please':1,'will':1,'from':1,'there':1,'about':1,'does':1,'been':1,'were':1,'they':1,'them':1,'would':1,'could':1,'should':1,'any':1};
+function reEsc(x){return x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function mkFill(it){
+  var txt=it.ex,vi=it.exm,m,ans=null,pre='',post='',alts=[];
+  if(it.t==='T'){
+    m=new RegExp('(^|[^A-Za-z])('+reEsc(it.e)+'[a-z]*)(?![A-Za-z])','i').exec(txt);
+    if(m){ans=m[2];pre=txt.slice(0,m.index+m[1].length);post=txt.slice(m.index+m[1].length+ans.length);
+      if(ans.toLowerCase()!==it.e.toLowerCase())alts.push(it.e);}
+  }
+  if(ans===null){ // cụm từ: khuyết từ dài nhất trong chính câu
+    txt=it.t==='T'?it.ex:it.e;vi=it.t==='T'?it.exm:it.m;
+    var best=null,re=/[A-Za-z']+/g,w;
+    while((w=re.exec(txt))){var lw=w[0].toLowerCase();
+      if(w[0].length>=4&&!STOP[lw]&&(!best||w[0].length>best[0].length))best=[w[0],w.index];}
+    if(!best){re=/[A-Za-z']+/g;while((w=re.exec(txt))){if(!best||w[0].length>best[0].length)best=[w[0],w.index];}}
+    ans=best[0];pre=txt.slice(0,best[1]);post=txt.slice(best[1]+ans.length);alts=[];
+  }
+  var SYN={medicine:['medication'],medication:['medicine'],small:['little','slight','quick'],tests:['test'],'test results':['test result']};
+  (SYN[ans.toLowerCase()]||[]).forEach(function(x){alts.push(x);});
+  return {id:it.id,pre:pre,ans:ans,post:post,alts:alts,vi:vi,term:(it.t==='T'?it.m:null)};
+}
+function fnorm(x){return String(x).toLowerCase().replace(/[’]/g,"'").replace(/-/g,' ').replace(/[^a-z0-9' ]/g,'').replace(/\s+/g,' ').trim().replace(/ /g,'');}
+var F=null;
+function startFill(g){
+  var ids=idsOf(g);
+  if(g==='all'){ids=ids.slice().sort(function(a,b){var sa=(fillst[a]||{s:0}).s,sb=(fillst[b]||{s:0}).s;return sa-sb||Math.random()-.5;}).slice(0,20);}
+  ids=ids.slice();for(var i=ids.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=ids[i];ids[i]=ids[j];ids[j]=t;}
+  F={g:g,q:ids.map(function(id){return mkFill(ITEMS[id]);}),total:ids.length,i:0,hint:0,used:false,done:false,right:0,wrong:0,firstTry:{}};
+  show('fill');fRender();
+}
+function fRender(){
+  var b=$('f-body');
+  if(F.i>=F.q.length)return fDone();
+  var q=F.q[F.i];F.hint=0;F.used=false;F.done=false;
+  $('f-bar').style.width=Math.round(100*F.i/F.q.length)+'%';
+  $('f-count').textContent=(F.i+1)+'/'+F.q.length;
+  b.innerHTML='<div class="fq"><div class="qlabel">Điền từ còn thiếu</div><div class="fvi">'+esc(q.vi)+'</div>'+(q.term?'<div class="fterm">Từ cần điền có nghĩa: <b>'+esc(q.term)+'</b></div>':'')+
+    '<div class="fsent">'+esc(q.pre)+'<span class="blank" id="f-blank">'+'&nbsp;'.repeat(3)+'</span>'+esc(q.post)+'</div>'+
+    '<div class="fhint" id="f-hint">'+(q.ans.length+' chữ cái')+'</div>'+
+    '<input class="fin" id="f-in" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Gõ từ còn thiếu">'+
+    '<div id="f-msg" class="fmsg"></div>'+
+    '<div class="fact" id="f-act"><button class="btn" id="f-ok" style="flex-basis:100%">Kiểm tra</button><button class="btn sec2" id="f-hbtn">Gợi ý</button><button class="btn sec2" id="f-skip">Không nhớ</button></div></div>';
+  var inp=$('f-in');try{inp.focus({preventScroll:true});}catch(e){}
+}
+function fHint(){if(F.done)return;var q=F.q[F.i];F.used=true;F.hint=Math.min(q.ans.length-1,F.hint+1);
+  var a=q.ans,h=a.slice(0,F.hint)+a.slice(F.hint).replace(/[A-Za-z0-9]/g,'_');
+  $('f-hint').textContent=h.split(' ').map(function(w){return w.split('').join(' ');}).join('   /   ');}
+function fReveal(good){
+  var q=F.q[F.i];F.done=true;
+  var bl=$('f-blank'),inp=$('f-in');
+  bl.textContent=q.ans;bl.className='blank '+(good?'ok':'bad');inp.className='fin '+(good?'ok':'bad');inp.disabled=true;
+  $('f-hint').textContent=q.term?('Từ vựng: '+q.ans+' — '+q.term):'';
+  $('f-act').innerHTML='<button class="btn" id="f-next">Tiếp tục</button>';
+  $('f-next').focus();
+}
+function fApply(id,good){
+  var st=fillst[id]||{s:0,n:0};st.n++;
+  if(good&&!F.used&&!F.firstTry.hasOwnProperty(id)){st.s=(st.s||0)+1;}
+  else if(!good){st.s=0;}
+  if(!F.firstTry.hasOwnProperty(id))F.firstTry[id]=good&&!F.used;
+  fillst[id]=st;fsave();
+}
+function fCheck(){
+  if(F.done)return;var q=F.q[F.i],v=fnorm($('f-in').value);if(!v)return;
+  var okSet=[q.ans].concat(q.alts).map(fnorm),good=okSet.indexOf(v)>=0;
+  if(good){F.right++;fApply(q.id,true);$('f-msg').className='fmsg ok';$('f-msg').textContent='Chính xác!';fReveal(true);}
+  else{
+    F.wrong++;fApply(q.id,false);$('f-msg').className='fmsg bad';$('f-msg').textContent='Chưa đúng. Đáp án: '+q.ans;fReveal(false);
+    F.q.splice(Math.min(F.q.length,F.i+5),0,Object.assign({},q)); // hỏi lại sau vài câu
+  }
+}
+function fSkip(){
+  if(F.done)return;var q=F.q[F.i];
+  var tv=fnorm($('f-in').value);if(tv&&[q.ans].concat(q.alts).map(fnorm).indexOf(tv)>=0)return fCheck();F.wrong++;fApply(q.id,false);
+  $('f-msg').className='fmsg bad';$('f-msg').textContent='Đáp án: '+q.ans;fReveal(false);
+  F.q.splice(Math.min(F.q.length,F.i+5),0,Object.assign({},q));
+}
+function fNext(){F.i++;fRender();}
+function fDone(){
+  var n=F.total,first=0;Object.keys(F.firstTry).forEach(function(k){if(F.firstTry[k])first++;});
+  $('f-bar').style.width='100%';$('f-count').textContent=F.q.length+'/'+F.q.length;
+  var mem=Object.keys(F.firstTry).reduce(function(a,k){return a+fmastered(k);},0);
+  $('f-body').innerHTML='<div class="rdone"><h2>Hoàn thành lượt điền từ</h2><div class="bigpct">'+Math.round(100*first/n)+'%</div>'+
+    '<p>'+first+' trên '+n+' câu đúng ngay lần đầu, '+F.wrong+' lần trả lời sai hoặc bỏ qua.</p><p>Đã nhớ vững (đúng liên tiếp 2 lần): '+mem+'/'+n+' câu trong lượt này.</p>'+
+    '<button class="btn" id="f-again">Điền lại bài này</button><button class="btn sec2" id="f-home">Về trang chính</button></div>';
+  $('f-again').onclick=function(){var g=F.g;startFill(g);};
+  $('f-home').onclick=function(){F=null;renderHome();show('home');};
+}
+$('f-body').addEventListener('click',function(e){var t=e.target;if(!F)return;
+  if(t.id==='f-ok')fCheck();else if(t.id==='f-hbtn')fHint();else if(t.id==='f-skip')fSkip();else if(t.id==='f-next')fNext();});
+$('f-body').addEventListener('keydown',function(e){if(!F||e.key!=='Enter'||e.target.tagName==='BUTTON')return;e.preventDefault();if(!F.done)fCheck();});
+$('f-close').addEventListener('click',function(){F=null;renderHome();show('home');});
+
+renderHome();
+})();
+</script>
+<script>
+if("serviceWorker" in navigator && /^https?:/.test(location.protocol)){
+  window.addEventListener("load", function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); });
+}
+</script>
+</body>
+</html>
